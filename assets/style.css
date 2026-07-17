@@ -326,11 +326,13 @@ body {
 
 .shots {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 1.1rem;
-  margin: 1.6rem auto 0;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.6rem;
+  max-width: 1000px;
+  margin: 2rem auto 0;
+  align-items: start;
 }
-@media (max-width: 960px) { .shots { grid-template-columns: repeat(2, 1fr); } }
+.shot-wide { grid-column: 1 / -1; }
 @media (max-width: 540px) { .shots { grid-template-columns: 1fr; } }
 
 .shot {
