@@ -45,6 +45,7 @@ body {
   background: var(--cream);
   color: var(--ink);
   line-height: 1.7;
+  word-break: keep-all; /* 한국어 어절 단위 줄바꿈 */
   /* 은은한 종이 질감 */
   background-image:
     radial-gradient(rgba(46, 74, 58, 0.045) 1px, transparent 1px);
@@ -298,7 +299,7 @@ body {
 .media-frame {
   overflow: hidden;
   aspect-ratio: 16 / 9;
-  max-width: 880px;
+  max-width: 1000px; /* 아래 스크린샷 2열 합친 폭과 동일 */
   margin-inline: auto;
   display: grid;
   place-items: center;
@@ -330,7 +331,7 @@ body {
   gap: 1.6rem;
   max-width: 1000px;
   margin: 2rem auto 0;
-  align-items: start;
+  /* 같은 줄의 카드는 높이를 맞춘다(남는 공간 허용) */
 }
 .shot-wide { grid-column: 1 / -1; }
 @media (max-width: 540px) { .shots { grid-template-columns: 1fr; } }
@@ -350,6 +351,7 @@ body {
   color: var(--ink-soft);
   padding: 0.55rem 0.6rem 0.7rem;
   border-top: 2px dashed rgba(47, 74, 60, 0.3);
+  margin-top: auto; /* 이미지가 짧아도 캡션은 카드 바닥에 붙인다 */
 }
 
 /* ── 사용 흐름 ────────────────────────────────────── */
