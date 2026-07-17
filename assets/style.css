@@ -1,0 +1,431 @@
+/* ==========================================================================
+   내가그린기린기록 — 소개 페이지
+   앱과 같은 크림 + 짙은 초록, 손그림(sketch) 테두리 감성
+   ========================================================================== */
+
+:root {
+  --cream: #f2ecdf;          /* 페이지 배경 */
+  --cream-soft: #faf6ec;     /* 카드 배경 */
+  --ink: #22372c;            /* 본문 잉크색 */
+  --ink-soft: #55685c;       /* 보조 텍스트 */
+  --green: #2e4a3a;          /* 브랜드 짙은 초록 */
+  --green-deep: #24382e;
+  --green-bubble: #5c7263;   /* 사용자 말풍선 */
+  --line: #2f4a3c;           /* 스케치 선 색 */
+  --shadow: 0 10px 30px rgba(34, 55, 44, 0.10);
+
+  --font-serif: "Gowun Batang", serif;
+  --font-body: "Gowun Dodum", sans-serif;
+  --font-hand: "Gaegu", cursive;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--cream);
+  color: var(--ink);
+  line-height: 1.7;
+  /* 은은한 종이 질감 */
+  background-image:
+    radial-gradient(rgba(46, 74, 58, 0.045) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+.container {
+  width: min(1080px, calc(100% - 2.5rem));
+  margin-inline: auto;
+}
+
+.center { text-align: center; }
+.br-desktop { display: none; }
+@media (min-width: 720px) { .br-desktop { display: inline; } }
+
+/* ── 손그림 테두리 공통 ──────────────────────────────
+   삐뚤빼뚤한 border-radius 로 스케치 느낌을 냅니다 */
+.sketch {
+  border: 2px solid var(--line);
+  border-radius: 255px 18px 225px 18px / 18px 225px 18px 255px;
+  background: var(--cream-soft);
+  box-shadow: 3px 4px 0 rgba(47, 74, 60, 0.16);
+}
+
+/* ── 버튼 ─────────────────────────────────────────── */
+.btn {
+  display: inline-block;
+  font-family: var(--font-body);
+  text-decoration: none;
+  border: 2px solid var(--green-deep);
+  border-radius: 200px 16px 200px 16px / 16px 200px 16px 200px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  cursor: pointer;
+}
+.btn:hover { transform: translateY(-2px) rotate(-0.3deg); }
+.btn:active { transform: translateY(0); }
+
+.btn-primary {
+  background: var(--green);
+  color: #f6efdf;
+  box-shadow: 3px 4px 0 rgba(36, 56, 46, 0.35);
+}
+.btn-primary:hover { background: var(--green-deep); box-shadow: 4px 6px 0 rgba(36, 56, 46, 0.3); }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--green-deep);
+}
+.btn-ghost:hover { background: rgba(46, 74, 58, 0.07); }
+
+.btn-sm { padding: 0.45rem 1.1rem; font-size: 0.92rem; }
+.btn-lg { padding: 0.85rem 1.9rem; font-size: 1.08rem; font-weight: 600; }
+
+/* ── 손글씨 노트 ──────────────────────────────────── */
+.hand-note {
+  font-family: var(--font-hand);
+  font-size: 1.25rem;
+  color: var(--ink-soft);
+  margin-bottom: 0.4rem;
+}
+.hand-note::before { content: "✎ "; }
+
+/* ── 헤더 ─────────────────────────────────────────── */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(242, 236, 223, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 2px solid rgba(47, 74, 60, 0.25);
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 0.8rem;
+  gap: 1rem;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  color: var(--ink);
+}
+.brand-mark { width: 38px; height: 38px; display: block; }
+.brand-mark svg { width: 100%; height: 100%; display: block; }
+.brand-name {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 1.12rem;
+  letter-spacing: 0.01em;
+}
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+}
+.header-nav a:not(.btn) {
+  text-decoration: none;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  transition: color 0.15s;
+}
+.header-nav a:not(.btn):hover { color: var(--green-deep); }
+.header-cta-mobile { display: none; }
+
+@media (max-width: 720px) {
+  .header-nav { display: none; }
+  .header-cta-mobile { display: inline-block; }
+}
+
+/* ── 히어로 ───────────────────────────────────────── */
+.hero { padding: 5rem 0 4.5rem; overflow: hidden; }
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+@media (max-width: 860px) {
+  .hero { padding-top: 3.2rem; }
+  .hero-inner { grid-template-columns: 1fr; gap: 2.6rem; }
+}
+
+.hero h1 {
+  font-family: var(--font-serif);
+  font-size: clamp(2.1rem, 5vw, 3.2rem);
+  line-height: 1.32;
+  font-weight: 700;
+  margin-bottom: 1.1rem;
+}
+.hero h1 em {
+  font-style: normal;
+  position: relative;
+  white-space: nowrap;
+}
+/* 형광펜 밑줄 */
+.hero h1 em::after {
+  content: "";
+  position: absolute;
+  left: -2px; right: -2px; bottom: 0.12em;
+  height: 0.42em;
+  background: rgba(122, 155, 132, 0.38);
+  z-index: -1;
+  border-radius: 4px;
+  transform: rotate(-0.5deg);
+}
+.hero-sub {
+  font-size: 1.07rem;
+  color: var(--ink-soft);
+  margin-bottom: 1.8rem;
+}
+.hero-sub strong { color: var(--green-deep); }
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  margin-bottom: 0.9rem;
+}
+.hero-hint {
+  font-family: var(--font-hand);
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+}
+
+/* ── 히어로 대화 목업 ─────────────────────────────── */
+.hero-chat { max-width: 430px; justify-self: end; width: 100%; }
+@media (max-width: 860px) { .hero-chat { justify-self: center; } }
+
+.chat-frame {
+  padding: 1.3rem 1.2rem 1.1rem;
+  transform: rotate(0.6deg);
+}
+.chat-head {
+  font-family: var(--font-hand);
+  font-size: 1.02rem;
+  color: var(--ink-soft);
+  margin-bottom: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+.chat-head .dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #4c7a5d;
+  display: inline-block;
+}
+
+.bubble {
+  position: relative;
+  padding: 0.75rem 0.95rem;
+  margin-bottom: 0.85rem;
+  font-size: 0.94rem;
+  line-height: 1.6;
+  max-width: 88%;
+  box-shadow: 2px 3px 0 rgba(47, 74, 60, 0.14);
+}
+.bubble.silok {
+  background: #fdfbf5;
+  margin-right: auto;
+  transform: rotate(-0.4deg);
+  padding-left: 2.5rem;
+}
+.bubble.silok .avatar {
+  position: absolute;
+  left: 0.7rem;
+  top: 0.65rem;
+  font-size: 1.05rem;
+}
+.bubble.user {
+  background: var(--green-bubble);
+  color: #f4f1e8;
+  margin-left: auto;
+  transform: rotate(0.4deg);
+  border-color: var(--green-deep);
+}
+.chat-typing {
+  font-family: var(--font-hand);
+  font-size: 0.98rem;
+  color: var(--ink-soft);
+  padding-left: 0.3rem;
+  animation: blink 1.6s ease-in-out infinite;
+}
+@keyframes blink { 50% { opacity: 0.45; } }
+
+/* ── 섹션 공통 ────────────────────────────────────── */
+.section { padding: 4.5rem 0; }
+.section-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.6rem, 3.6vw, 2.2rem);
+  font-weight: 700;
+  margin-bottom: 2.6rem;
+}
+
+/* ── 미디어(영상/스크린샷) ────────────────────────── */
+.section-media { padding-top: 3.4rem; }
+
+.media-frame {
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  max-width: 880px;
+  margin-inline: auto;
+  display: grid;
+  place-items: center;
+  padding: 0;
+}
+.media-frame video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.media-placeholder {
+  display: grid;
+  place-items: center;
+  gap: 0.25rem;
+  text-align: center;
+  color: var(--ink-soft);
+  padding: 2rem;
+}
+.media-placeholder .media-icon { font-size: 2.4rem; }
+.media-placeholder p { font-family: var(--font-hand); font-size: 1.3rem; }
+.media-placeholder small { font-size: 0.85rem; opacity: 0.75; }
+.media-placeholder.small { padding: 1.4rem 0.8rem; }
+.media-placeholder.small .media-icon { font-size: 1.8rem; }
+
+.shots {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.4rem;
+  max-width: 880px;
+  margin: 1.6rem auto 0;
+}
+@media (max-width: 720px) { .shots { grid-template-columns: 1fr; } }
+
+.shot {
+  overflow: hidden;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+.shot > .media-placeholder { flex: 1; min-height: 150px; }
+.shot img { width: 100%; display: block; }
+.shot figcaption {
+  font-family: var(--font-hand);
+  font-size: 1.02rem;
+  text-align: center;
+  color: var(--ink-soft);
+  padding: 0.55rem 0.6rem 0.7rem;
+  border-top: 2px dashed rgba(47, 74, 60, 0.3);
+}
+
+/* ── 사용 흐름 ────────────────────────────────────── */
+.flow-steps {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 1.3rem;
+  counter-reset: step;
+}
+.flow-step {
+  position: relative;
+  padding: 1.6rem 1.2rem 1.4rem;
+  text-align: center;
+}
+.flow-step:nth-child(odd) { transform: rotate(-0.5deg); }
+.flow-step:nth-child(even) { transform: rotate(0.5deg); }
+
+.step-num {
+  position: absolute;
+  top: -0.85rem;
+  left: 50%;
+  translate: -50% 0;
+  width: 1.8rem;
+  height: 1.8rem;
+  display: grid;
+  place-items: center;
+  background: var(--green);
+  color: #f6efdf;
+  font-family: var(--font-hand);
+  font-size: 1.05rem;
+  border-radius: 50% 45% 55% 50%;
+  border: 2px solid var(--green-deep);
+}
+.step-emoji { font-size: 1.9rem; display: block; margin-bottom: 0.5rem; }
+.flow-step h3 {
+  font-family: var(--font-serif);
+  font-size: 1.08rem;
+  margin-bottom: 0.45rem;
+}
+.flow-step p { font-size: 0.9rem; color: var(--ink-soft); }
+
+/* ── 특징 ─────────────────────────────────────────── */
+.features {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  max-width: 880px;
+  margin-inline: auto;
+}
+@media (max-width: 720px) { .features { grid-template-columns: 1fr; } }
+
+.feature { padding: 1.7rem 1.6rem; }
+.feature:nth-child(odd) { transform: rotate(-0.35deg); }
+.feature:nth-child(even) { transform: rotate(0.35deg); }
+.feature-emoji { font-size: 1.9rem; display: block; margin-bottom: 0.6rem; }
+.feature h3 {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  margin-bottom: 0.5rem;
+}
+.feature p { font-size: 0.95rem; color: var(--ink-soft); }
+
+/* ── 마지막 CTA ───────────────────────────────────── */
+.section-cta { padding-bottom: 5.5rem; }
+.cta-card {
+  display: inline-block;
+  padding: 3rem clamp(1.6rem, 6vw, 4.5rem);
+  transform: rotate(-0.4deg);
+}
+.cta-card h2 {
+  font-family: var(--font-serif);
+  font-size: clamp(1.4rem, 3.4vw, 2rem);
+  margin-bottom: 1.6rem;
+}
+
+/* ── 푸터 ─────────────────────────────────────────── */
+.site-footer {
+  border-top: 2px solid rgba(47, 74, 60, 0.25);
+  padding: 1.6rem 0 2rem;
+  background: rgba(46, 74, 58, 0.05);
+}
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem 1.5rem;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+}
+.footer-inner nav { display: flex; gap: 1.2rem; }
+.footer-inner a { color: var(--green-deep); text-decoration: none; }
+.footer-inner a:hover { text-decoration: underline; }
+
+/* ── 등장 효과 ────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  translate: 0 18px;
+  transition: opacity 0.6s ease, translate 0.6s ease;
+}
+.reveal.shown { opacity: 1; translate: 0 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; translate: none; transition: none; }
+  .chat-typing { animation: none; }
+  html { scroll-behavior: auto; }
+}
