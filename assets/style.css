@@ -468,7 +468,7 @@ body {
   border-radius: 12px 12px 4px 4px;
   margin-bottom: 0.7rem;
 }
-.menubar-bar .menubar-mascot img { width: 20px; display: block; filter: brightness(4) grayscale(1); }
+.menubar-bar .menubar-mascot img { width: 13px; display: block; image-rendering: pixelated; }
 .menubar-bar .menubar-time {
   color: #dfe8df;
   font-size: 0.78rem;
@@ -498,10 +498,10 @@ body {
 .popover-textarea .caret {
   display: inline-block;
   width: 2px;
-  height: 1em;
+  height: 1.05em;
   background: var(--green);
   margin-left: 2px;
-  vertical-align: text-bottom;
+  vertical-align: -0.12em; /* 글자 높이에 맞춰 살짝 위로 */
   animation: blink 1.1s step-end infinite;
 }
 .popover-foot { margin-top: 0.7rem; }
