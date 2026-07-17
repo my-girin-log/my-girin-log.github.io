@@ -21,6 +21,23 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
+/* ── 잉크 라인 아이콘 ─────────────────────────────── */
+.svg-defs { display: none; }
+
+.icon {
+  width: 2rem;
+  height: 2rem;
+  stroke: var(--green);
+  fill: none;
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  display: block;
+}
+.icon .ink-fill { fill: var(--green); stroke: none; }
+.icon-lg { width: 2.6rem; height: 2.6rem; }
+.icon-xl { width: 3.4rem; height: 3.4rem; stroke-width: 2.3; }
+
 html { scroll-behavior: smooth; }
 
 body {
@@ -235,9 +252,13 @@ body {
 }
 .bubble.silok .avatar {
   position: absolute;
-  left: 0.7rem;
-  top: 0.65rem;
-  font-size: 1.05rem;
+  left: 0.55rem;
+  top: 0.6rem;
+}
+.bubble.silok .avatar .icon {
+  width: 1.45rem;
+  height: 1.45rem;
+  stroke-width: 4;
 }
 .bubble.user {
   background: var(--green-bubble);
@@ -291,11 +312,10 @@ body {
   color: var(--ink-soft);
   padding: 2rem;
 }
-.media-placeholder .media-icon { font-size: 2.4rem; }
+.media-placeholder .media-icon { display: block; opacity: 0.8; }
 .media-placeholder p { font-family: var(--font-hand); font-size: 1.3rem; }
 .media-placeholder small { font-size: 0.85rem; opacity: 0.75; }
 .media-placeholder.small { padding: 1.4rem 0.8rem; }
-.media-placeholder.small .media-icon { font-size: 1.8rem; }
 
 .shots {
   display: grid;
@@ -355,7 +375,8 @@ body {
   border-radius: 50% 45% 55% 50%;
   border: 2px solid var(--green-deep);
 }
-.step-emoji { font-size: 1.9rem; display: block; margin-bottom: 0.5rem; }
+.step-icon { display: block; margin-bottom: 0.6rem; }
+.step-icon .icon { margin-inline: auto; }
 .flow-step h3 {
   font-family: var(--font-serif);
   font-size: 1.08rem;
@@ -376,7 +397,7 @@ body {
 .feature { padding: 1.7rem 1.6rem; }
 .feature:nth-child(odd) { transform: rotate(-0.35deg); }
 .feature:nth-child(even) { transform: rotate(0.35deg); }
-.feature-emoji { font-size: 1.9rem; display: block; margin-bottom: 0.6rem; }
+.feature-icon { display: block; margin-bottom: 0.7rem; }
 .feature h3 {
   font-family: var(--font-serif);
   font-size: 1.15rem;

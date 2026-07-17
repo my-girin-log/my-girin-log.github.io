@@ -15,7 +15,7 @@
   <meta property="og:image" content="https://my-girin-log.github.io/assets/og-image.png" />
   -->
 
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦒</text></svg>" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='2' y='2' width='60' height='60' rx='14' fill='%232E4A3A'/%3E%3Cg stroke='%23F6EFDF' stroke-width='3' stroke-linecap='round' fill='none'%3E%3Cpath d='M24 50 V30 C24 22 30 18 34 18'/%3E%3Cpath d='M34 18 C39 18 43 21 43 26 V29'/%3E%3Cpath d='M33 12 L35 17'/%3E%3Cpath d='M41 13 L40 17'/%3E%3C/g%3E%3Ccircle cx='38.5' cy='24' r='1.9' fill='%23F6EFDF'/%3E%3Cg fill='%23F6EFDF' opacity='0.85'%3E%3Ccircle cx='28' cy='34' r='1.6'/%3E%3Ccircle cx='31' cy='42' r='1.6'/%3E%3C/g%3E%3C/svg%3E" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -25,12 +25,93 @@
 </head>
 <body>
 
+  <!-- ─────────────────── 잉크 라인 아이콘 정의 ─────────────────── -->
+  <svg class="svg-defs" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <!-- 실록이 (기린) -->
+    <symbol id="i-giraffe" viewBox="0 0 64 64">
+      <path d="M24 52 V30 C24 21.5 30 17.5 34 17.5" />
+      <path d="M34 17.5 C39.5 17.5 43.5 21 43.5 26 V29.5" />
+      <path d="M33 11.5 L35 16.5" />
+      <path d="M41.5 12.5 L40.3 16.5" />
+      <circle cx="38.7" cy="23.5" r="0.8" class="ink-fill" />
+      <circle cx="28" cy="35" r="1.1" class="ink-fill" />
+      <circle cx="31" cy="43" r="1.1" class="ink-fill" />
+    </symbol>
+    <!-- 메모: 접힌 노트 + 연필 -->
+    <symbol id="i-memo" viewBox="0 0 48 48">
+      <path d="M10.5 7.5 H29.5 L38 16 V40.5 H10.5 Z" />
+      <path d="M29.5 7.5 V16 H38" />
+      <path d="M16.5 24 H31.5" />
+      <path d="M16.5 30 H27" />
+      <path d="M30.5 43.5 L41 33 L44.5 36.5 L34 47 L29.5 47.8 Z" transform="translate(-4 -6) scale(0.92)" />
+    </symbol>
+    <!-- 카테고리: 겹쳐 묶인 카드 -->
+    <symbol id="i-cards" viewBox="0 0 48 48">
+      <path d="M14 15 H38 V33 H14 Z" transform="rotate(-4 26 24)" />
+      <path d="M11 20 H35 V38 H11 Z" transform="rotate(2 23 29)" />
+      <path d="M16 26 H27" transform="rotate(2 23 29)" />
+      <path d="M16 31 H24" transform="rotate(2 23 29)" />
+    </symbol>
+    <!-- 대화: 말풍선 둘 -->
+    <symbol id="i-chat" viewBox="0 0 48 48">
+      <path d="M8.5 10.5 H31 V25 H16 L10.5 30 V25 H8.5 Z" />
+      <path d="M35.5 20 H40 V33.5 H38 V37.5 L33.5 33.5 H24 V28" />
+      <path d="M14.5 17.5 H25" />
+    </symbol>
+    <!-- 일기: 펼친 책 -->
+    <symbol id="i-book" viewBox="0 0 48 48">
+      <path d="M24 12 C20 8.5 13 8 7.5 9.5 V37 C13 35.5 20 36 24 39.5 C28 36 35 35.5 40.5 37 V9.5 C35 8 28 8.5 24 12 Z" />
+      <path d="M24 12 V39.5" />
+      <path d="M12.5 16 C15.5 15.3 18.5 15.5 20.5 16.5" />
+      <path d="M12.5 22 C15.5 21.3 18.5 21.5 20.5 22.5" />
+      <path d="M27.5 16.5 C29.5 15.5 32.5 15.3 35.5 16" />
+    </symbol>
+    <!-- 잔디: 새싹 -->
+    <symbol id="i-sprout" viewBox="0 0 48 48">
+      <path d="M24 40 V24" />
+      <path d="M24 27 C24 19 18 14.5 10.5 15 C11 22.5 16.5 27.5 24 27 Z" />
+      <path d="M24 22 C24.5 16 29 12 36.5 12.5 C36 19 31 23 24.5 22.5" />
+      <path d="M13 40.5 C20 39 28 39 35 40.5" />
+    </symbol>
+    <!-- 영상: 재생 -->
+    <symbol id="i-play" viewBox="0 0 48 48">
+      <rect x="7.5" y="10.5" width="33" height="27" rx="6" transform="rotate(-1.2 24 24)" />
+      <path d="M20.5 18.5 L29.5 24 L20.5 29.5 Z" />
+    </symbol>
+    <!-- 거울 -->
+    <symbol id="i-mirror" viewBox="0 0 48 48">
+      <ellipse cx="24" cy="19.5" rx="10.5" ry="12.5" transform="rotate(-3 24 19.5)" />
+      <path d="M24 32 V42" />
+      <path d="M19 42.5 H29" />
+      <path d="M19.5 14.5 C20.5 12.5 22.5 11 24.5 10.8" />
+    </symbol>
+    <!-- 기억: 실타래 나선 -->
+    <symbol id="i-thread" viewBox="0 0 48 48">
+      <path d="M25 24.5 C28 21.5 33 23.5 32.5 27.5 C32 32 26 33.5 22.5 30.5 C18 26.5 21 19 27 17.5 C34.5 15.5 41 21.5 39.5 29 C38 37 29 41.5 21 38.5 C12 35 8.5 24.5 14 16.5" />
+      <path d="M14 16.5 L11 13.5 M14 16.5 L10.5 17.5" />
+    </symbol>
+    <!-- 깊어지는 질문: 과녁 + 화살 -->
+    <symbol id="i-target" viewBox="0 0 48 48">
+      <circle cx="22" cy="26" r="13" transform="rotate(-2 22 26)" />
+      <circle cx="22" cy="26" r="6.5" />
+      <circle cx="22" cy="26" r="1" class="ink-fill" />
+      <path d="M22 26 L38 10" />
+      <path d="M38 10 L37.5 16 M38 10 L32 10.5" />
+    </symbol>
+    <!-- 쓰지 않아도 써지는 일기: 깃펜 -->
+    <symbol id="i-quill" viewBox="0 0 48 48">
+      <path d="M13 38 C14 26 22 12 37 8.5 C36 20 28 32 16.5 36.5" />
+      <path d="M37 8.5 C30 14 22 24 16 34" />
+      <path d="M13 38 L10.5 41.5" />
+      <path d="M9 44.5 C17 42.5 28 42.5 39 44.5" />
+    </symbol>
+  </svg>
+
   <!-- ─────────────────── 헤더 ─────────────────── -->
   <header class="site-header">
     <div class="container header-inner">
       <a href="#" class="brand">
         <span class="brand-mark" aria-hidden="true">
-          <!-- 실록이 심볼 (인라인 SVG) -->
           <svg viewBox="0 0 64 64" role="img" aria-label="실록이">
             <rect x="2" y="2" width="60" height="60" rx="14" fill="#2E4A3A"/>
             <g stroke="#F6EFDF" stroke-width="3" stroke-linecap="round" fill="none">
@@ -89,14 +170,14 @@
               <span class="dot"></span> 회고 중 · 오늘의 대화
             </div>
             <div class="bubble silok sketch">
-              <span class="avatar">🦒</span>
+              <span class="avatar"><svg class="icon"><use href="#i-giraffe"/></svg></span>
               <p>발표 준비로 바쁜 하루였네요. 막상 마치고 나니 어떤 마음이 들었나요?</p>
             </div>
             <div class="bubble user sketch">
               <p>후련했어! 걱정했던 것보다 반응이 좋아서 놀랐어</p>
             </div>
             <div class="bubble silok sketch">
-              <span class="avatar">🦒</span>
+              <span class="avatar"><svg class="icon"><use href="#i-giraffe"/></svg></span>
               <p>걱정했던 부분이 좋은 반응으로 돌아왔을 때, 스스로 가장 잘했다고 느낀 준비는 뭐였어요?</p>
             </div>
             <div class="chat-typing">실록이가 다음 질문을 그리는 중…</div>
@@ -116,7 +197,7 @@
 
         <div class="media-frame sketch reveal">
           <div class="media-placeholder">
-            <span class="media-icon">🎬</span>
+            <span class="media-icon"><svg class="icon icon-xl"><use href="#i-play"/></svg></span>
             <p>데모 영상이 들어갈 자리예요</p>
             <small>assets/demo.mp4 를 추가하면 이 자리에 재생됩니다</small>
           </div>
@@ -132,21 +213,21 @@
         <div class="shots">
           <figure class="shot sketch reveal">
             <div class="media-placeholder small">
-              <span class="media-icon">📝</span>
+              <span class="media-icon"><svg class="icon icon-lg"><use href="#i-memo"/></svg></span>
               <small>메모 화면</small>
             </div>
             <figcaption>부담 없이 남기는 하루의 조각</figcaption>
           </figure>
           <figure class="shot sketch reveal">
             <div class="media-placeholder small">
-              <span class="media-icon">💬</span>
+              <span class="media-icon"><svg class="icon icon-lg"><use href="#i-chat"/></svg></span>
               <small>대화 화면</small>
             </div>
             <figcaption>실록이와 나누는 회고 대화</figcaption>
           </figure>
           <figure class="shot sketch reveal">
             <div class="media-placeholder small">
-              <span class="media-icon">📖</span>
+              <span class="media-icon"><svg class="icon icon-lg"><use href="#i-book"/></svg></span>
               <small>일기 화면</small>
             </div>
             <figcaption>하루가 정리된 나의 Diary</figcaption>
@@ -164,31 +245,31 @@
         <ol class="flow-steps">
           <li class="flow-step sketch reveal">
             <span class="step-num">1</span>
-            <span class="step-emoji">📝</span>
+            <span class="step-icon"><svg class="icon icon-lg"><use href="#i-memo"/></svg></span>
             <h3>메모를 남겨요</h3>
             <p>떠오를 때마다 짧게. 형식도, 부담도 없이 하루 동안 자유롭게 적어요.</p>
           </li>
           <li class="flow-step sketch reveal">
             <span class="step-num">2</span>
-            <span class="step-emoji">🗂️</span>
+            <span class="step-icon"><svg class="icon icon-lg"><use href="#i-cards"/></svg></span>
             <h3>주제로 묶여요</h3>
             <p>흩어진 메모를 실록이가 카테고리별로 정리해요. 오늘 이야기 나눌 주제를 골라요.</p>
           </li>
           <li class="flow-step sketch reveal">
             <span class="step-num">3</span>
-            <span class="step-emoji">💬</span>
+            <span class="step-icon"><svg class="icon icon-lg"><use href="#i-chat"/></svg></span>
             <h3>실록이와 대화해요</h3>
             <p>감정 → 이유 → 배운 점까지, 좋은 질문이 하루를 한 겹 더 깊게 돌아보게 해요.</p>
           </li>
           <li class="flow-step sketch reveal">
             <span class="step-num">4</span>
-            <span class="step-emoji">📖</span>
+            <span class="step-icon"><svg class="icon icon-lg"><use href="#i-book"/></svg></span>
             <h3>일기가 완성돼요</h3>
             <p>매일 아침, 어제의 메모와 대화가 한 편의 일기(Diary)로 정리되어 있어요.</p>
           </li>
           <li class="flow-step sketch reveal">
             <span class="step-num">5</span>
-            <span class="step-emoji">🌱</span>
+            <span class="step-icon"><svg class="icon icon-lg"><use href="#i-sprout"/></svg></span>
             <h3>회고와 잔디로 쌓여요</h3>
             <p>기간을 골라 회고를 만들고, 기록한 날은 잔디로 채워져요. 꾸준함이 눈에 보여요.</p>
           </li>
@@ -204,22 +285,22 @@
 
         <div class="features">
           <article class="feature sketch reveal">
-            <span class="feature-emoji">🪞</span>
+            <span class="feature-icon"><svg class="icon icon-lg"><use href="#i-mirror"/></svg></span>
             <h3>내 말투를 비추는 거울</h3>
             <p>온보딩에서 나의 글과 회고 스타일을 읽고, 내 말투와 호흡에 맞춰 대화해요. 낯선 상담사가 아니라 옆자리 동료처럼요.</p>
           </article>
           <article class="feature sketch reveal">
-            <span class="feature-emoji">🧠</span>
+            <span class="feature-icon"><svg class="icon icon-lg"><use href="#i-thread"/></svg></span>
             <h3>나를 기억하는 대화</h3>
             <p>최근 며칠의 기록을 기억하고 자연스럽게 이어줘요. 어제의 고민이 오늘의 질문으로 돌아옵니다.</p>
           </article>
           <article class="feature sketch reveal">
-            <span class="feature-emoji">🎯</span>
+            <span class="feature-icon"><svg class="icon icon-lg"><use href="#i-target"/></svg></span>
             <h3>깊어지는 질문</h3>
             <p>감정 → 이유 → 판단 기준 → 배운 점 → 다음 행동. 한 걸음씩 내려가는 질문이 회고의 깊이를 만들어요.</p>
           </article>
           <article class="feature sketch reveal">
-            <span class="feature-emoji">✍️</span>
+            <span class="feature-icon"><svg class="icon icon-lg"><use href="#i-quill"/></svg></span>
             <h3>쓰지 않아도 써지는 일기</h3>
             <p>대화만 해도 하루가 일기로 정리돼요. 메모만 남긴 날도 소중한 기록으로 남습니다.</p>
           </article>
