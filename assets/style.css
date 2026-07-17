@@ -319,12 +319,13 @@ body {
 
 .shots {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.4rem;
-  max-width: 880px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.3rem;
+  max-width: 1000px;
   margin: 1.6rem auto 0;
 }
-@media (max-width: 720px) { .shots { grid-template-columns: 1fr; } }
+@media (max-width: 960px) { .shots { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 540px) { .shots { grid-template-columns: 1fr; } }
 
 .shot {
   overflow: hidden;
