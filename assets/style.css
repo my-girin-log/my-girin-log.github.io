@@ -395,6 +395,146 @@ body {
 }
 .flow-step p { font-size: 0.9rem; color: var(--ink-soft); }
 
+/* ── 메뉴바 앱 ────────────────────────────────────── */
+.menubar-inner {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  max-width: 1000px;
+  margin-inline: auto;
+}
+@media (max-width: 860px) { .menubar-inner { grid-template-columns: 1fr; gap: 2.4rem; } }
+.menubar-copy { min-width: 0; } /* nowrap 코드가 그리드 칸을 밀어내지 않게 */
+
+.menubar-desc {
+  font-size: 1.02rem;
+  color: var(--ink-soft);
+  margin-bottom: 1.4rem;
+}
+.menubar-desc br { display: none; }
+@media (min-width: 860px) { .menubar-desc br { display: inline; } }
+
+.install-box { padding: 1.1rem 1.2rem 1rem; }
+.install-label {
+  font-family: var(--font-hand);
+  font-size: 1.08rem;
+  color: var(--green-deep);
+  margin-bottom: 0.55rem;
+}
+.install-row {
+  display: flex;
+  align-items: stretch;
+  gap: 0.6rem;
+}
+.install-row code {
+  flex: 1;
+  min-width: 0;
+  display: block;
+  background: #23372c;
+  color: #e9f2e9;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 0.78rem;
+  line-height: 1.5;
+  padding: 0.65rem 0.8rem;
+  border-radius: 10px;
+  overflow-x: auto;
+  white-space: nowrap;
+  word-break: normal;
+}
+.install-note {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  margin-top: 0.6rem;
+}
+.menubar-links { margin-top: 0.9rem; }
+.menubar-links a {
+  color: var(--green-deep);
+  font-size: 0.92rem;
+  text-decoration: none;
+  border-bottom: 1.5px dashed rgba(47, 74, 60, 0.4);
+}
+.menubar-links a:hover { border-bottom-style: solid; }
+
+/* 팝오버 목업 */
+.menubar-mock { max-width: 340px; justify-self: center; width: 100%; }
+.menubar-bar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  padding: 0.4rem 0.9rem;
+  background: #2c3b31;
+  border-radius: 12px 12px 4px 4px;
+  margin-bottom: 0.7rem;
+}
+.menubar-bar .menubar-mascot img { width: 20px; display: block; filter: brightness(4) grayscale(1); }
+.menubar-bar .menubar-time {
+  color: #dfe8df;
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+}
+.popover-mock {
+  padding: 1rem 1rem 0.9rem;
+  transform: rotate(-0.5deg);
+}
+.popover-head {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.7rem;
+}
+.popover-head img { width: 1.5rem; border-radius: 5px; }
+.popover-head strong { font-size: 1.02rem; }
+.popover-textarea {
+  border: 2px solid var(--line);
+  border-radius: 14px 6px 14px 6px;
+  min-height: 5.2rem;
+  padding: 0.7rem 0.85rem;
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+  background: #fdfbf5;
+}
+.popover-textarea .caret {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background: var(--green);
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  animation: blink 1.1s step-end infinite;
+}
+.popover-foot { margin-top: 0.7rem; }
+.popover-link {
+  display: block;
+  text-align: right;
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  text-decoration: underline;
+  margin-bottom: 0.6rem;
+}
+.popover-actions {
+  display: flex;
+  gap: 0.6rem;
+}
+.pop-btn {
+  flex: 1;
+  text-align: center;
+  padding: 0.5rem 0;
+  font-size: 0.92rem;
+  border-radius: 100px 12px 100px 12px / 12px 100px 12px 100px;
+  border: 2px solid var(--green-deep);
+}
+.pop-btn.ghost { color: var(--ink); background: transparent; }
+.pop-btn.solid { color: #f6efdf; background: var(--green); }
+.menubar-mock-note {
+  font-family: var(--font-hand);
+  text-align: center;
+  color: var(--ink-soft);
+  font-size: 1rem;
+  margin-top: 0.8rem;
+}
+
 /* ── 특징 ─────────────────────────────────────────── */
 .features {
   display: grid;

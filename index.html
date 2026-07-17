@@ -119,6 +119,7 @@
       <nav class="header-nav">
         <a href="#flow">사용 흐름</a>
         <a href="#features">특징</a>
+        <a href="#menubar">메뉴바 앱</a>
         <a href="#preview">미리보기</a>
         <a href="https://github.com/my-girin-log" target="_blank" rel="noopener">GitHub</a>
         <a class="btn btn-primary btn-sm" href="https://www.girinlog.site/" target="_blank" rel="noopener">시작하기</a>
@@ -233,7 +234,7 @@
             <span class="step-num">1</span>
             <span class="step-icon"><svg class="icon icon-lg"><use href="#i-memo"/></svg></span>
             <h3>메모를 남겨요</h3>
-            <p>떠오를 때마다 짧게. 형식도, 부담도 없이 하루 동안 자유롭게 적어요.</p>
+            <p>떠오를 때마다 짧게. 웹에서도, 맥 메뉴바에서도 하루 동안 자유롭게 적어요.</p>
           </li>
           <li class="flow-step sketch reveal">
             <span class="step-num">2</span>
@@ -260,6 +261,59 @@
             <p>기간을 골라 회고를 만들고, 기록한 날은 잔디로 채워져요. 꾸준함이 눈에 보여요.</p>
           </li>
         </ol>
+      </div>
+    </section>
+
+
+    <!-- ─────────────────── 메뉴바 앱 ─────────────────── -->
+    <section id="menubar" class="section section-menubar">
+      <div class="container">
+        <p class="hand-note center">맥북을 쓰신다면</p>
+        <h2 class="section-title center">생각난 순간, 메뉴바에서 바로</h2>
+
+        <div class="menubar-inner">
+          <div class="menubar-copy reveal">
+            <p class="menubar-desc">
+              사이트를 열 필요도 없어요. 맥 메뉴바에 사는 실록이를 클릭하면<br />
+              바로 메모 창이 열리고, 적은 메모는 곧장 내 기록으로 쌓입니다.<br />
+              생각날 때마다 툭 던져두고, 하루 끝엔 사이트에서 주제로 묶어 대화하면 돼요.
+            </p>
+            <div class="install-box sketch">
+              <div class="install-label">터미널에 한 줄이면 설치 끝</div>
+              <div class="install-row">
+                <code id="install-cmd">curl -fsSL https://raw.githubusercontent.com/my-girin-log/girin-log-menubar-releases/main/install.sh | bash</code>
+                <button class="btn btn-primary btn-sm" id="copy-install" type="button">복사</button>
+              </div>
+              <p class="install-note">최신 버전을 받아 응용 프로그램에 설치하고 바로 실행돼요. 업데이트도 앱 안에서 클릭 한 번.</p>
+            </div>
+            <p class="menubar-links">
+              <a href="https://github.com/my-girin-log/girin-log-menubar-releases" target="_blank" rel="noopener">DMG로 직접 설치하기 →</a>
+            </p>
+          </div>
+
+          <!-- 팝오버 목업 -->
+          <div class="menubar-mock reveal" aria-hidden="true">
+            <div class="menubar-bar sketch">
+              <span class="menubar-mascot"><img src="assets/silok.png" alt="" /></span>
+              <span class="menubar-time">기린 Log 9:41</span>
+            </div>
+            <div class="popover-mock sketch">
+              <div class="popover-head">
+                <img src="assets/silok.png" alt="" />
+                <strong>오늘 하루 어땠어?</strong>
+              </div>
+              <div class="popover-textarea">간단히 기록해보세요<span class="caret"></span></div>
+              <div class="popover-foot">
+                <span class="popover-link">회고 작성하러 가기</span>
+                <div class="popover-actions">
+                  <span class="pop-btn ghost">취소</span>
+                  <span class="pop-btn solid">전송</span>
+                </div>
+              </div>
+            </div>
+            <p class="menubar-mock-note">타이핑하면 실록이 목이 쭉— 늘어나요</p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -326,6 +380,14 @@
       { threshold: 0.15 }
     );
     document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+
+    // 설치 명령 복사
+    const copyBtn = document.getElementById("copy-install");
+    if (copyBtn) copyBtn.addEventListener("click", async () => {
+      await navigator.clipboard.writeText(document.getElementById("install-cmd").textContent.trim());
+      copyBtn.textContent = "복사됨!";
+      setTimeout(() => (copyBtn.textContent = "복사"), 1600);
+    });
   </script>
 </body>
 </html>
