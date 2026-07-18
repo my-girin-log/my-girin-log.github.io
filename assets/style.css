@@ -296,6 +296,12 @@ body {
 /* ── 미디어(영상/스크린샷) ────────────────────────── */
 .section-media { padding-top: 3.4rem; }
 
+/* 사진/영상이 주인공인 구역이라 손그림 테두리 대신 깔끔한 사각 테두리를 씀 */
+.section-media .sketch {
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(47, 74, 60, 0.12);
+}
+
 .media-frame {
   overflow: hidden;
   aspect-ratio: 16 / 9;
